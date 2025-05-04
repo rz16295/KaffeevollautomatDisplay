@@ -1,24 +1,37 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using KaffeevollautomatDisplay.Views;
 
 namespace KaffeevollautomatDisplay
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void OpenGetraenkewahl_Click(object sender, RoutedEventArgs e)
+        {
+            // View anzeigen und Startseite verstecken
+            var view = new GetraenkewahlView();
+            view.ZurueckClicked += View_ZurueckClicked;
+            MainContent.Content = view;
+            MainContent.Visibility = Visibility.Visible;
+            StartseiteGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void View_ZurueckClicked(object sender, System.EventArgs e)
+        {
+            // Zurück zur Startseite
+            MainContent.Visibility = Visibility.Collapsed;
+            MainContent.Content = null;
+            StartseiteGrid.Visibility = Visibility.Visible;
+        }
+
+        private void Reinigung_Click(object sender, RoutedEventArgs e) { }
+
+        private void Sprache_Click(object sender, RoutedEventArgs e) { }
+
+        private void Fuellstand_Click(object sender, RoutedEventArgs e) { }
     }
 }

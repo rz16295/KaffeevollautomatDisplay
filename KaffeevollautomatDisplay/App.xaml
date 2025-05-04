@@ -1,9 +1,14 @@
 ﻿<Application x:Class="KaffeevollautomatDisplay.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:KaffeevollautomatDisplay"
+             
+             xmlns:vm="clr-namespace:KaffeevollautomatDisplay.ViewModels"
+             xmlns:v="clr-namespace:KaffeevollautomatDisplay.Views"
+             
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type vm:GetraenkewahlViewModel}">
+            <v:GetraenkewahlView />
+        </DataTemplate>
     </Application.Resources>
 </Application>

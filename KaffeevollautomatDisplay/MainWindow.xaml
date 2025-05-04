@@ -4,61 +4,57 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KaffeevollautomatDisplay"
+        xmlns:views="clr-namespace:KaffeevollautomatDisplay.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="150"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Margin="10" Click="Kaffee_Click">
-                <StackPanel>
-                    <Image Source="C:\Users\zierh\OneDrive\Desktop\Studium\6. Semester\Software Engineering\KaffeevollautomatDisplay\Kaffee.png" Height="80"/>
-                    <TextBlock Text="Kaffee" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button Margin="10" Click="Cappuccino_Click">
-                <StackPanel>
-                    <Image Source="C:\Users\zierh\OneDrive\Desktop\Studium\6. Semester\Software Engineering\KaffeevollautomatDisplay\Cappuccino.png" Height="80"/>
-                    <TextBlock Text="Cappuccino" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button Margin="10" Click="Espresso_Click">
-                <StackPanel>
-                    <Image Source="C:\Users\zierh\OneDrive\Desktop\Studium\6. Semester\Software Engineering\KaffeevollautomatDisplay\Espresso.png" Height="80"/>
-                    <TextBlock Text="Espresso" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+        Title="MainWindow" Height="600" Width="800">
+    <Grid x:Name="MainGrid">
+        <!-- STARTSEITE -->
+        <Grid x:Name="StartseiteGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Willkommen!" FontSize="36" FontWeight="Bold" />
-        </StackPanel>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Margin="10" Click="OpenGetraenkewahl_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Kaffee.png" Height="80"/>
+                        <TextBlock Text="Getränkeauswahl" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
 
-        <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Margin="10" Click="Reinigung_Click">
-                <StackPanel>
-                    <Image Source="C:\Users\zierh\OneDrive\Desktop\Studium\6. Semester\Software Engineering\KaffeevollautomatDisplay\Reinigung.png" Height="80"/>
-                    <TextBlock Text="Reinigung" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button Margin="10" Click="Sprache_Click">
-                <StackPanel>
-                    <Image Source="C:\Users\zierh\OneDrive\Desktop\Studium\6. Semester\Software Engineering\KaffeevollautomatDisplay\Sprache.png" Height="80"/>
-                    <TextBlock Text="Sprache" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button Margin="10" Click="Fuellstand_Click">
-                <StackPanel>
-                    <Image Source="C:\Users\zierh\OneDrive\Desktop\Studium\6. Semester\Software Engineering\KaffeevollautomatDisplay\Fuellstand.png" Height="80"/>
-                    <TextBlock Text="Füllstand" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Willkommen!" FontSize="36" FontWeight="Bold" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Margin="10" Click="Reinigung_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Reinigung.png" Height="80"/>
+                        <TextBlock Text="Reinigung" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="10" Click="Sprache_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Sprache.png" Height="80"/>
+                        <TextBlock Text="Sprache" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="10" Click="Fuellstand_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Fuellstand.png" Height="80"/>
+                        <TextBlock Text="Füllstand" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- CONTENT-VIEW -->
+        <ContentControl x:Name="MainContent" Visibility="Collapsed"/>
     </Grid>
 </Window>
