@@ -53,7 +53,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-
+        <TextBlock x:Name="FuellstandHinweis" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" FontSize="16" FontWeight="Bold" Foreground="Red"/>
         <!-- CONTENT-VIEW -->
         <ContentControl x:Name="MainContent" Visibility="Collapsed"/>
     </Grid>

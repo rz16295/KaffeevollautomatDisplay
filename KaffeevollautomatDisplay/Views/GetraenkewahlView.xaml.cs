@@ -7,6 +7,7 @@ namespace KaffeevollautomatDisplay.Views
 {
     public partial class GetraenkewahlView : UserControl
     {
+        public event EventHandler<Getraenk> GetraenkAusgewaehlt;
         public event EventHandler ZurueckClicked;
 
         public GetraenkewahlView()
@@ -14,25 +15,24 @@ namespace KaffeevollautomatDisplay.Views
             InitializeComponent();
         }
 
-        private void ZurueckButton_Click(object sender, RoutedEventArgs e)
-        {
-            ZurueckClicked?.Invoke(this, EventArgs.Empty);
-        }
-
         private void Kaffee_Click(object sender, RoutedEventArgs e)
         {
-            AppState.AktuellesGetraenk = new Kaffee();
+            GetraenkAusgewaehlt?.Invoke(this, new Kaffee());
         }
 
         private void Cappuccino_Click(object sender, RoutedEventArgs e)
         {
-            AppState.AktuellesGetraenk = new Cappuccino();
+            GetraenkAusgewaehlt?.Invoke(this, new Cappuccino());
         }
 
         private void Espresso_Click(object sender, RoutedEventArgs e)
         {
-            AppState.AktuellesGetraenk = new Espresso();
+            GetraenkAusgewaehlt?.Invoke(this, new Espresso());
         }
 
+        private void ZurueckButton_Click(object sender, RoutedEventArgs e)
+        {
+            ZurueckClicked?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

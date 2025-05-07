@@ -18,6 +18,23 @@ namespace KaffeevollautomatDisplay
             MainContent.Content = view;
             MainContent.Visibility = Visibility.Visible;
             StartseiteGrid.Visibility = Visibility.Collapsed;
+
+           
+            view.GetraenkAusgewaehlt += (s, getraenk) =>
+            {
+                var zubereitungView = new ZubereitungView(getraenk);
+                zubereitungView.ZubereitungBeendet += (ss, ee) =>
+                {
+                    MainContent.Content = null;
+                    MainContent.Visibility = Visibility.Collapsed;
+                    StartseiteGrid.Visibility = Visibility.Visible;
+                    AktualisiereFuellstandHinweis();
+                };
+
+                MainContent.Content = zubereitungView;
+            };
+            view.ZurueckClicked += (s, e) => { MainContent.Content = null; };
+            MainContent.Content = view;
         }
 
         private void View_ZurueckClicked(object sender, System.EventArgs e)
@@ -32,6 +49,41 @@ namespace KaffeevollautomatDisplay
 
         private void Sprache_Click(object sender, RoutedEventArgs e) { }
 
-        private void Fuellstand_Click(object sender, RoutedEventArgs e) { }
+        
+
+        public void ZurueckZurStartseite()
+        {
+            MainContent.Content = null; // oder neue StartView, falls du eine eigene hast
+        }
+
+        private void AktualisiereFuellstandHinweis()
+        {
+            var fehltText = "";
+
+            if (Fuellstand.AktuelleBohnen <= 0)
+                fehltText += "Bohnen leer. ";
+
+            if (Fuellstand.AktuellerWasser <= 0)
+                fehltText += "Wasser leer. ";
+
+            FuellstandHinweis.Text = fehltText.Trim();
+        }
+
+        private void Fuellstand_Click(object sender, RoutedEventArgs e)
+        {
+            var view = new FuellstandView();
+            view.ZurueckClicked += (s, ee) =>
+            {
+                MainContent.Content = null;
+                MainContent.Visibility = Visibility.Collapsed;
+                StartseiteGrid.Visibility = Visibility.Visible;
+                AktualisiereFuellstandHinweis();
+            };
+            MainContent.Content = view;
+            MainContent.Visibility = Visibility.Visible;
+            StartseiteGrid.Visibility = Visibility.Collapsed;
+        }
+
+
     }
 }

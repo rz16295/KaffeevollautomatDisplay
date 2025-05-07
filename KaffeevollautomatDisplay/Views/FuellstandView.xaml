@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="KaffeevollautomatDisplay.Views.FuellstandView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="400" Width="800">
+    <Grid Background="White" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,10">
+            <Button Content="Wasser auffüllen" Margin="5" Click="WasserAuffuellen_Click"/>
+            <Button Content="Bohnen auffüllen" Margin="5" Click="BohnenAuffuellen_Click"/>
+            <Button Content="Zurück" Margin="5" Click="ZurueckButton_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Wasserstand" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock x:Name="WasserstandText" FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Bohnenstand" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock x:Name="BohnenstandText" FontSize="16"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
