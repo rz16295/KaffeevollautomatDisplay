@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using KaffeevollautomatDisplay.Views;
 
 namespace KaffeevollautomatDisplay
@@ -47,7 +48,28 @@ namespace KaffeevollautomatDisplay
 
         private void Reinigung_Click(object sender, RoutedEventArgs e) { }
 
-        private void Sprache_Click(object sender, RoutedEventArgs e) { }
+        private void Sprache_Click(object sender, RoutedEventArgs e) {
+            var view = new SpracheView();
+            view.SpracheGeaendert += (s, ee) =>
+            {
+                MainContent.Content = null;
+                MainContent.Visibility = Visibility.Collapsed;
+                StartseiteGrid.Visibility = Visibility.Visible;
+                SetzeSpracheTexte();
+                AktualisiereFuellstandHinweis();
+            };
+            view.ZurueckClicked += (s, ee) =>
+            {
+                MainContent.Content = null;
+                MainContent.Visibility = Visibility.Collapsed;
+                StartseiteGrid.Visibility = Visibility.Visible;
+                SetzeSpracheTexte();
+            };
+
+            MainContent.Content = view;
+            MainContent.Visibility = Visibility.Visible;
+            StartseiteGrid.Visibility = Visibility.Collapsed;
+        }
 
         
 
@@ -83,6 +105,25 @@ namespace KaffeevollautomatDisplay
             MainContent.Visibility = Visibility.Visible;
             StartseiteGrid.Visibility = Visibility.Collapsed;
         }
+
+        private void SetzeSpracheTexte()
+        {
+            // Linke Spalte (Buttons)
+            var linkeSpalte = (StackPanel)StartseiteGrid.Children[0];
+            ((TextBlock)((StackPanel)((Button)linkeSpalte.Children[0]).Content).Children[1]).Text = SpracheManager.Text("Getränkeauswahl");
+
+            // Mitte (Willkommen)
+            var mitte = (StackPanel)StartseiteGrid.Children[1];
+            ((TextBlock)mitte.Children[0]).Text = SpracheManager.Text("Willkommen");
+
+            // Rechte Spalte (Buttons)
+            var rechteSpalte = (StackPanel)StartseiteGrid.Children[2];
+            ((TextBlock)((StackPanel)((Button)rechteSpalte.Children[0]).Content).Children[1]).Text = SpracheManager.Text("Reinigung");
+            ((TextBlock)((StackPanel)((Button)rechteSpalte.Children[1]).Content).Children[1]).Text = SpracheManager.Text("Sprache");
+            ((TextBlock)((StackPanel)((Button)rechteSpalte.Children[2]).Content).Children[1]).Text = SpracheManager.Text("Füllstand");
+        }
+
+
 
 
     }

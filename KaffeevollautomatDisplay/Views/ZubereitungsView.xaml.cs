@@ -15,21 +15,23 @@ namespace KaffeevollautomatDisplay.Views
             InitializeComponent();
             _getraenk = getraenk;
 
+            string getraenkName = SpracheManager.Text(_getraenk.Name);
+
             if (!Fuellstand.GenugFuellstand(getraenk))
             {
-                string fehlermeldung = $"Nicht genug Ressourcen für {_getraenk.Name}!";
+                string fehlermeldung = $"{SpracheManager.Text("Nicht genug Ressourcen")} {getraenkName}!";
 
                 if (Fuellstand.AktuelleBohnen < getraenk.BohnenVerbrauchGramm)
-                    fehlermeldung += " (Bohnen)";
+                    fehlermeldung += $" ({SpracheManager.Text("Bohnen:").TrimEnd(':')})";
                 if (Fuellstand.AktuellerWasser < getraenk.WasserVerbrauchMl)
-                    fehlermeldung += " (Wasser)";
+                    fehlermeldung += $" ({SpracheManager.Text("Wasser:").TrimEnd(':')})";
 
                 ZubereitungText.Text = fehlermeldung;
 
                 // Nach kurzer Zeit zur Startseite zurückkehren
                 Task.Run(async () =>
                 {
-                    await Task.Delay(2000); // 2 Sekunden warten
+                    await Task.Delay(2000);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         ZubereitungBeendet?.Invoke(this, EventArgs.Empty);
@@ -39,7 +41,7 @@ namespace KaffeevollautomatDisplay.Views
                 return;
             }
 
-            ZubereitungText.Text = $"Ihr {_getraenk.Name} wird zubereitet:";
+            ZubereitungText.Text = $"{SpracheManager.Text("Ihr Getränk wird zubereitet")} {getraenkName}.";
             StartZubereitung();
         }
 
@@ -57,12 +59,13 @@ namespace KaffeevollautomatDisplay.Views
                 await Task.Delay(interval);
             }
 
-            ZubereitungText.Text = $"{_getraenk.Name} ist fertig!";
+            string getraenkName = SpracheManager.Text(_getraenk.Name);
+            ZubereitungText.Text = $"{getraenkName} {SpracheManager.Text("ist fertig")}";
             ZubereitungsProgressBar.Visibility = Visibility.Collapsed;
 
-            Console.WriteLine($"{_getraenk.Name} wurde erfolgreich zubereitet.");
+            Console.WriteLine($"{getraenkName} wurde erfolgreich zubereitet.");
 
-            await Task.Delay(2000); // 2 Sekunden anzeigen
+            await Task.Delay(2000);
             ZubereitungBeendet?.Invoke(this, EventArgs.Empty);
         }
     }
