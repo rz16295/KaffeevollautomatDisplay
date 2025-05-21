@@ -39,7 +39,6 @@ namespace KaffeevollautomatDisplay.Views
 
         private void SetzeTexte()
         {
-            // Finde die Buttons per Index und aktualisiere deren Beschriftung
             if (this.Content is Grid grid && grid.Children[0] is StackPanel buttonPanel)
             {
                 if (buttonPanel.Children[0] is Button wasserBtn)
@@ -52,7 +51,6 @@ namespace KaffeevollautomatDisplay.Views
                     zurueckBtn.Content = SpracheManager.Text("Zurück");
             }
 
-            // Wasserstand-Überschrift
             if (this.Content is Grid mainGrid && mainGrid.Children[1] is Grid contentGrid)
             {
                 if (contentGrid.Children[0] is StackPanel wasserPanel && wasserPanel.Children[0] is TextBlock wasserTitel)

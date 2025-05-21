@@ -21,11 +21,9 @@ namespace KaffeevollautomatDisplay.Views
             var grid = this.Content as Grid;
             if (grid == null) return;
 
-            // Überschrift
             if (grid.Children[0] is TextBlock ueberschrift)
                 ueberschrift.Text = SpracheManager.Text("Bitte wählen Sie Ihr Getränk");
 
-            // Getränkenamen in Buttons (StackPanel in Button in StackPanel)
             if (grid.Children[1] is StackPanel buttonPanel)
             {
                 if (buttonPanel.Children[0] is Button kaffeeBtn &&
@@ -50,7 +48,6 @@ namespace KaffeevollautomatDisplay.Views
                 }
             }
 
-            // Zurück-Button
             ZurueckButton.Content = SpracheManager.Text("Zurück");
         }
 

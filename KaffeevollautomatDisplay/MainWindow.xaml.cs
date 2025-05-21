@@ -75,7 +75,7 @@ namespace KaffeevollautomatDisplay
 
         public void ZurueckZurStartseite()
         {
-            MainContent.Content = null; // oder neue StartView, falls du eine eigene hast
+            MainContent.Content = null;
         }
 
         private void AktualisiereFuellstandHinweis()
