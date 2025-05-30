@@ -36,7 +36,7 @@ namespace KaffeevollautomatDisplay
                     "ist fertig" => "is ready!",
 
                     // Zubereitung
-                    "Ihr Getränk wird zubereitet" => "Your drink is being prepared:",
+                    "Ihr Getränk wird zubereitet" => "Your drink is being prepared",
 
                     // Füllstand
                     "Wasser auffüllen" => "Refill water",
@@ -56,6 +56,12 @@ namespace KaffeevollautomatDisplay
                     "Kaffee" => "Coffee",
                     "Cappuccino" => "Cappuccino",
                     "Espresso" => "Espresso",
+
+                    // Stärke wählen
+                    "Stärke wählen" => "Choose strength",
+                    "Mild" => "Mild",
+                    "Normal" => "Normal",
+                    "Stark" => "Strong",
 
                     _ => key
                 },

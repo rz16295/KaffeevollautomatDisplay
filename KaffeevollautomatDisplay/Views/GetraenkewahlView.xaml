@@ -14,27 +14,41 @@
                    FontSize="28" FontWeight="Bold"
                    HorizontalAlignment="Center" Margin="0,20,0,20"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="150" Height="180" Margin="10" Click="Kaffee_Click">
-                <StackPanel>
-                    <Image Source="/Bilder/Kaffee.png" Height="80"/>
-                    <TextBlock Text="Kaffee" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button Width="150" Height="180" Margin="10" Click="Cappuccino_Click">
-                <StackPanel>
-                    <Image Source="pack://application:,,,/Bilder/Cappuccino.png" Height="80"/>
-                    <TextBlock Text="Cappuccino" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button Width="150" Height="180" Margin="10" Click="Espresso_Click">
-                <StackPanel>
-                    <Image Source="/Bilder/Espresso.png" Height="80"/>
-                    <TextBlock Text="Espresso" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+        <!-- Inhalt mit Stärkeauswahl und Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,20">
+
+            <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+                <TextBlock x:Name="StaerkeText" Text="Stärke wählen:" FontSize="18" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="StaerkeComboBox" Width="200" SelectedIndex="1">
+                    <ComboBoxItem Content="Mild" />
+                    <ComboBoxItem Content="Normal" />
+                    <ComboBoxItem Content="Stark" />
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="150" Height="180" Margin="10" Click="Kaffee_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Kaffee.png" Height="80"/>
+                        <TextBlock x:Name="KaffeeText" Text="Kaffee" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="150" Height="180" Margin="10" Click="Cappuccino_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Cappuccino.png" Height="80"/>
+                        <TextBlock x:Name="CappuccinoText" Text="Cappuccino" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="150" Height="180" Margin="10" Click="Espresso_Click">
+                    <StackPanel>
+                        <Image Source="/Bilder/Espresso.png" Height="80"/>
+                        <TextBlock x:Name="EspressoText" Text="Espresso" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </StackPanel>
 
+        <!-- Zurück Button -->
         <Button x:Name="ZurueckButton" Grid.Row="2" Content="Zurück" Width="120" Height="40"
                 HorizontalAlignment="Center" Margin="0,20,0,20" Click="ZurueckButton_Click"/>
     </Grid>

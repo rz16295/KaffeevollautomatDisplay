@@ -34,6 +34,7 @@ namespace KaffeevollautomatDisplay.Views
 
         private void ZurueckButton_Click(object sender, RoutedEventArgs e)
         {
+            
             ZurueckClicked?.Invoke(this, EventArgs.Empty);
         }
 

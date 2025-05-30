@@ -34,7 +34,7 @@ namespace KaffeevollautomatDisplay.Views
 
         private void SetzeTexte()
         {
-            
+            ZurueckTextBlock.Text = SpracheManager.Text("Zurück");
         }
     }
 }

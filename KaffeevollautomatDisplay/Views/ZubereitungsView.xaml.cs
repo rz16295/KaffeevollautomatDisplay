@@ -41,7 +41,7 @@ namespace KaffeevollautomatDisplay.Views
                 return;
             }
 
-            ZubereitungText.Text = $"{SpracheManager.Text("Ihr Getränk wird zubereitet")} {getraenkName}.";
+            ZubereitungText.Text = $"{SpracheManager.Text("Ihr Getränk wird zubereitet")}: {getraenkName}";
             StartZubereitung();
         }
 

@@ -18,43 +18,29 @@ namespace KaffeevollautomatDisplay.Views
 
         private void SetzeTexte()
         {
-            var grid = this.Content as Grid;
-            if (grid == null) return;
-
-            if (grid.Children[0] is TextBlock ueberschrift)
+            // Überschrift
+            if (this.Content is Grid grid && grid.Children[0] is TextBlock ueberschrift)
                 ueberschrift.Text = SpracheManager.Text("Bitte wählen Sie Ihr Getränk");
 
-            if (grid.Children[1] is StackPanel buttonPanel)
-            {
-                if (buttonPanel.Children[0] is Button kaffeeBtn &&
-                    kaffeeBtn.Content is StackPanel kaffeeStack &&
-                    kaffeeStack.Children[1] is TextBlock kaffeeText)
-                {
-                    kaffeeText.Text = SpracheManager.Text("Kaffee");
-                }
-
-                if (buttonPanel.Children[1] is Button cappuccinoBtn &&
-                    cappuccinoBtn.Content is StackPanel cappuccinoStack &&
-                    cappuccinoStack.Children[1] is TextBlock cappuccinoText)
-                {
-                    cappuccinoText.Text = SpracheManager.Text("Cappuccino");
-                }
-
-                if (buttonPanel.Children[2] is Button espressoBtn &&
-                    espressoBtn.Content is StackPanel espressoStack &&
-                    espressoStack.Children[1] is TextBlock espressoText)
-                {
-                    espressoText.Text = SpracheManager.Text("Espresso");
-                }
-            }
-
+            KaffeeText.Text = SpracheManager.Text("Kaffee");
+            CappuccinoText.Text = SpracheManager.Text("Cappuccino");
+            EspressoText.Text = SpracheManager.Text("Espresso");
             ZurueckButton.Content = SpracheManager.Text("Zurück");
+            StaerkeText.Text = SpracheManager.Text("Stärke wählen");
+
+            if (StaerkeComboBox.Items[0] is ComboBoxItem item1) item1.Content = SpracheManager.Text("Mild");
+            if (StaerkeComboBox.Items[1] is ComboBoxItem item2) item2.Content = SpracheManager.Text("Normal");
+            if (StaerkeComboBox.Items[2] is ComboBoxItem item3) item3.Content = SpracheManager.Text("Stark");
         }
+
 
 
         private void Kaffee_Click(object sender, RoutedEventArgs e)
         {
-            GetraenkAusgewaehlt?.Invoke(this, new Kaffee());
+            var kaffee = new Kaffee();
+            kaffee.Staerke = AusgewaehlteStaerke();
+            GetraenkAusgewaehlt?.Invoke(this, kaffee);
+
         }
 
         private void Cappuccino_Click(object sender, RoutedEventArgs e)
@@ -70,6 +56,17 @@ namespace KaffeevollautomatDisplay.Views
         private void ZurueckButton_Click(object sender, RoutedEventArgs e)
         {
             ZurueckClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private Kaffeestaerke AusgewaehlteStaerke()
+        {
+            return StaerkeComboBox.SelectedIndex switch
+            {
+                0 => Kaffeestaerke.Mild,
+                1 => Kaffeestaerke.Normal,
+                2 => Kaffeestaerke.Stark,
+                _ => Kaffeestaerke.Normal
+            };
         }
     }
 }

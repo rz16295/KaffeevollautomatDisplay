@@ -10,13 +10,13 @@
 
         public static bool GenugFuellstand(Getraenk getraenk)
         {
-            return AktuellerWasser >= getraenk.WasserVerbrauchMl && AktuelleBohnen >= getraenk.BohnenVerbrauchGramm;
+            return AktuellerWasser >= getraenk.WasserVerbrauchMl && AktuelleBohnen >= getraenk.BerechneterBohnenVerbrauch;
         }
 
         public static void VerbrauchEintragen(Getraenk getraenk)
         {
             AktuellerWasser -= getraenk.WasserVerbrauchMl;
-            AktuelleBohnen -= getraenk.BohnenVerbrauchGramm;
+            AktuelleBohnen -= getraenk.BerechneterBohnenVerbrauch;
         }
 
         public static void WasserAuffuellen() => AktuellerWasser = MaxWasser;
