@@ -8,4 +8,34 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Bilder\Cappuccino.png" />
+    <None Remove="Bilder\Espresso.png" />
+    <None Remove="Bilder\Fuellstand.png" />
+    <None Remove="Bilder\Kaffee.png" />
+    <None Remove="Bilder\Reinigung.png" />
+    <None Remove="Bilder\Sprache.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\Cappuccino.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Espresso.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Fuellstand.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Kaffee.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Reinigung.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Sprache.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>
