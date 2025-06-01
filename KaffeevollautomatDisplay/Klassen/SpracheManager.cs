@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using System.Threading;
 
+// Die Klasse SpracheManager wurde mit Unterstützung von ChatGPT erstellt und im Projekt eigenständig angepasst.
+
 namespace KaffeevollautomatDisplay
 {
     public static class SpracheManager
